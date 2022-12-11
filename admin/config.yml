@@ -1,0 +1,154 @@
+# config.yml
+
+backend:
+  name: 'github'
+  repo: prodigy2m/digitalobster.com.git
+  branch: master # Branch to update (optional; defaults to master)
+  base_url: '/'
+  local_backend: true
+# publish_mode: editorial_workflow
+media_folder: 'assets/images'
+# collections:
+# - name: 'pages'
+#   label: 'Pages'
+#   editor:
+#     preview: true
+#   folder: '_site'
+#   summary: "{{title | upper}} - {{date | date('YYYY-MM-DD')}}"
+#   fields:
+#     - { label: 'Title', name: 'title', widget: 'string' }
+#     - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+collections:
+  - name: 'static_pages'
+    label: 'Static Pages'
+    icon: pin
+    folder: "content/homepages/"
+    path: '/'
+    editor:
+      preview: false
+    # identifier_field: slug
+    value_field: "slogan"
+    displayFields: ['slogan']
+    nested:
+      depth: 100 # max depth to show in the collection tree
+      # path: '{{meta.path}}'
+      summary: '{{meta.slogan}}: {{title}}' 
+    # files:
+      # - label: 'Homepage'
+      #   name: '/index.md'
+      #   file: 'about.md'
+    fields:
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: false
+        required: false
+      - label: "Permalink"
+        name: "permalink"
+        widget: "string"
+        required: false
+      - label: Title
+        name: title
+        widget: string
+      - label: Body
+        name: body
+        widget: markdown
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+      - label: "Tags"
+        name: "tags"
+        widget: "text"
+        required: false
+      - label: "Slogan"
+        name: "slogan"
+        widget: "string"
+        required: false
+  - name: pages
+    label: Pages
+    folder: "content/pages"
+    path: '/'
+    create: true
+    # adding a nested object will show the collection folder structure
+    nested:
+      depth: 100 # max depth to show in the collection tree
+      summary: '{{title}}' # optional summary for a tree node, defaults to the inferred title field
+    fields:
+      - label: "Published"
+        name: "published"
+        widget: "boolean"
+        default: false
+        required: false
+      - label: "Permalink"
+        name: "permalink"
+        widget: "string"
+        required: false
+      - label: Title
+        name: title
+        widget: string
+      - label: Body
+        name: body
+        widget: markdown
+      - label: "Description"
+        name: "description"
+        widget: "text"
+        required: false
+      - label: "Tags"
+        name: "tags"
+        widget: "text"
+        required: false
+      - label: "Slogan"
+        name: "slogan"
+        widget: "string"
+        required: false
+      - label: "Templates"
+        name: "layout"
+        widget: "select"
+        add_to_top: true
+        required: true
+        allow_add: false
+        options:
+        - { label: "Page", value: "page" }
+        - { label: "Services", value: "services" }
+        - { label: "Gallery", value: "gallery" }
+        - { label: "Home", value: "home" }
+        default: { label: "Page", value: "page" }
+      # - label: "Tags2"
+      #   name: "tags"
+      #   widget: "list"
+      #   allow_add: true
+
+      #   default: ["page"]
+  - name: 'config'
+    label: 'Config'
+    # delete: false
+    allow_add: true
+    editor:
+      preview: false
+    description: 'General Site Settings'
+    files:
+    - label: 'Navigation'
+      name: 'navigation'
+      file: '_data/navigation.yml'
+      fields:
+        - label: 'Navigation Items'
+          name: 'items'
+          widget: 'list'
+          fields:
+            - { label: Name, name: name, widget: string }
+            - { label: Link, name: link, widget: string }
+    # adding a meta object with a path property allows editing the path of entries
+    # moving an existing entry will move the entire sub tree of the entry to the new location
+    meta: { path: { widget: string, label: 'Path', index_file: 'index' } }
+
+
+
+  # files:
+  #   - label: 'About Page'
+  #     name: 'about'
+  #     file: '_site/about/index.md'
+  #     fields:
+  #       - { label: 'Title', name: 'title', widget: 'hidden', default: 'about' }
+  #       - { label: 'Layout', name: 'layout', widget: 'hidden', default: 'about' }
+  #       - { label: 'Body', name: 'body', widget: 'markdown' }
