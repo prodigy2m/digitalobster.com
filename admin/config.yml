@@ -2,7 +2,7 @@
 
 backend:
   name: 'github'
-  repo: prodigy2m/digitalobster.com.github.io
+  repo: prodigy2m/digitalobster.com
   branch: master # Branch to update (optional; defaults to master)
   base_url: '/'
   local_backend: false
