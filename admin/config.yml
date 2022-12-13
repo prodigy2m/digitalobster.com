@@ -110,7 +110,7 @@ collections:
         allow_add: false
         options:
         - { label: "Page", value: "page" }
-        - { label: "Services", value: "services" }
+        - { label: "Post", value: "post" }
         - { label: "Gallery", value: "gallery" }
         - { label: "Home", value: "home" }
         default: { label: "Page", value: "page" }
@@ -130,7 +130,7 @@ collections:
     files:
     - label: 'Navigation'
       name: 'navigation'
-      file: '_data/navigation.yml'
+      file: 'data/navigation.yml'
       fields:
         - label: 'Navigation Items'
           name: 'items'
